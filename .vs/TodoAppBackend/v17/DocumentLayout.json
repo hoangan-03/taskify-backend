@@ -3,28 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|c:\\users\\john\\source\\repos\\todoappbackend\\models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|solutionrelative:models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|c:\\users\\john\\source\\repos\\todoappbackend\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|solutionrelative:applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|c:\\users\\john\\source\\repos\\todoappbackend\\models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|solutionrelative:models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|c:\\users\\john\\source\\repos\\todoappbackend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|c:\\users\\john\\source\\repos\\todoappbackend\\controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|solutionrelative:controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|c:\\users\\john\\source\\repos\\todoappbackend\\dtos\\tasksdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|solutionrelative:dtos\\tasksdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|c:\\users\\john\\source\\repos\\todoappbackend\\controllers\\tagscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|solutionrelative:controllers\\tagscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|c:\\users\\john\\source\\repos\\todoappbackend\\controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|solutionrelative:controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|c:\\users\\john\\source\\repos\\todoappbackend\\controllers\\tagscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|solutionrelative:controllers\\tagscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|c:\\users\\john\\source\\repos\\todoappbackend\\dtos\\tasksdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|solutionrelative:dtos\\tasksdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,24 +38,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\ApplicationDbContext.cs",
-              "RelativeToolTip": "ApplicationDbContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-19T16:30:13.474Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -59,33 +50,59 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAC+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-07-19T17:22:29.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\ApplicationDbContext.cs",
+              "RelativeToolTip": "ApplicationDbContext.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAABFwA8AAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-19T16:30:13.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Models.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\Models.cs",
               "RelativeDocumentMoniker": "Models.cs",
               "ToolTip": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\Models.cs",
               "RelativeToolTip": "Models.cs",
-              "ViewState": "AQIAADgAAAAAAAAAAAAwwHoAAAAMAAAA",
+              "ViewState": "AQIAACgAAAAAAAAAAAA2wCsAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-19T12:59:27.727Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ProjectsController.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\Controllers\\ProjectsController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProjectsController.cs",
               "ToolTip": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\Controllers\\ProjectsController.cs",
               "RelativeToolTip": "Controllers\\ProjectsController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAkAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-19T12:58:57.376Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "TagsController.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\Controllers\\TagsController.cs",
               "RelativeDocumentMoniker": "Controllers\\TagsController.cs",
@@ -98,20 +115,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "TasksController.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\Controllers\\TasksController.cs",
               "RelativeDocumentMoniker": "Controllers\\TasksController.cs",
               "ToolTip": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\Controllers\\TasksController.cs",
               "RelativeToolTip": "Controllers\\TasksController.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAA0wCcAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACcAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-19T12:57:32.438Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "TasksDTO.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\DTOs\\TasksDTO.cs",
               "RelativeDocumentMoniker": "DTOs\\TasksDTO.cs",
