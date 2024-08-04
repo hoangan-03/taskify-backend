@@ -48,8 +48,9 @@ namespace TodoAppBackend
 
 	public class Tag
 	{
-		[Key]
-		public int TagId { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int TagId { get; set; }
 
 		[Required]
 		public string? TagName { get; set; }
@@ -115,36 +116,38 @@ namespace TodoAppBackend
 		public ICollection<Task> Tasks { get; set; } = new List<Task>();
 	}
 
-	public class Task
-	{
-		[Key]
-		public int Id { get; set; }
+    public class Task
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
-		[Required]
-		public string? Title { get; set; }
-		public string? Description { get; set; }
-		public DateTime CreatedAt { get; set; }
-		public DateTime Deadline { get; set; }
+        [Required]
+        public string? Title { get; set; }
+        public string? Description { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime Deadline { get; set; }
 
-		[Required]
-		public string? Type { get; set; }
+        [Required]
+        public string[] Type { get; set; } = Array.Empty<string>();
 
-		// Foreign key for Project
-		[ForeignKey("Project")]
-		public string? ProjectId { get; set; }
-		public Project? Project { get; set; }
+        // Foreign key for Project
+        [ForeignKey("Project")]
+        public string? ProjectId { get; set; }
+        public Project? Project { get; set; }
 
-		// Foreign key for User
-		[ForeignKey("User")]
-		public string? UserId { get; set; }
-		public User? User { get; set; }
+        // Foreign key for User
+        [ForeignKey("User")]
+        public string? UserId { get; set; }
+        public User? User { get; set; }
 
-		// Navigation properties
-		public ICollection<TaskTag> TaskTags { get; set; } = new List<TaskTag>();
-		public ICollection<Comment> Comments { get; set; } = new List<Comment>();
-		public ICollection<Attachment> Attachments { get; set; } = new List<Attachment>();
-	}
-	public class TaskTag
+        // Navigation properties
+        public ICollection<TaskTag> TaskTags { get; set; } = new List<TaskTag>();
+        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
+        public ICollection<Attachment> Attachments { get; set; } = new List<Attachment>();
+    }
+
+    public class TaskTag
 	{
 		public int TaskId { get; set; }
 		public Task? Task { get; set; }

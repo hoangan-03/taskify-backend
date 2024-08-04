@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Collections.Generic;
 using System.Reflection.Emit;
 using System.Threading.Channels;
-
+using System.Text.Json;
 namespace TodoAppBackend
 {
     public class ApplicationDbContext : DbContext
@@ -55,6 +56,14 @@ namespace TodoAppBackend
                 .WithMany(t => t.Attachments)
                 .HasForeignKey(a => a.TaskId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            var stringArrayConverter = new ValueConverter<string[], string>(
+           v => JsonSerializer.Serialize(v, (JsonSerializerOptions)null),
+           v => JsonSerializer.Deserialize<string[]>(v, (JsonSerializerOptions)null));
+
+            modelBuilder.Entity<Task>()
+                .Property(e => e.Type)
+                .HasConversion(stringArrayConverter);
         }
 
     }
