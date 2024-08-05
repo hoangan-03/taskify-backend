@@ -48,11 +48,45 @@ namespace TodoAppBackend.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Task>> AddTask(Task newTask)
+        public async Task<ActionResult<Task>> AddTask(TaskDto newTaskDto)
         {
-            if (newTask == null)
+            if (newTaskDto == null)
             {
                 return BadRequest("Task is null.");
+            }
+
+            var newTask = new Task
+            {
+                Title = newTaskDto.Title,
+                Description = newTaskDto.Description,
+                CreatedAt = newTaskDto.CreatedAt,
+                Deadline = newTaskDto.Deadline,
+                Type = newTaskDto.Type,
+                ProjectId = newTaskDto.ProjectId, // Assuming ProjectName is actually ProjectId
+                Comments = newTaskDto.Comments,
+                Attachments = newTaskDto.Attachments
+            };
+
+            foreach (var tagDto in newTaskDto.TaskTags)
+            {
+                var tag = await _context.Tags.FirstOrDefaultAsync(t => t.TagName == tagDto.Name);
+                if (tag == null)
+                {
+                    tag = new Tag { TagName = tagDto.Name, Color = tagDto.Color };
+                    _context.Tags.Add(tag);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    // Update the color if it has changed
+                    if (tag.Color != tagDto.Color)
+                    {
+                        tag.Color = tagDto.Color;
+                        _context.Tags.Update(tag);
+                        await _context.SaveChangesAsync();
+                    }
+                }
+                newTask.TaskTags.Add(new TaskTag { TagId = tag.TagId, Tag = tag });
             }
 
             _context.Tasks.Add(newTask);
@@ -71,10 +105,12 @@ namespace TodoAppBackend.Controllers
         public DateTime Deadline { get; set; }
         public string[] Type { get; set; }
         public string? ProjectName { get; set; }
+        public string? ProjectId { get; set; }
         public List<TagDto> TaskTags { get; set; } = new List<TagDto>();
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();
         public ICollection<Attachment> Attachments { get; set; } = new List<Attachment>();
     }
+
     public class TagDto
     {
         public string Name { get; set; }
