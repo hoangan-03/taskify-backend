@@ -41,9 +41,10 @@ namespace TodoAppBackend
 		public string? Password { get; set; }
 		public DateTime CreateAt { get; set; } = DateTime.UtcNow;
 
-		// Navigation property
-		public ICollection<Task> Tasks { get; set; } = new List<Task>();
-		public ICollection<Comment> Comments { get; set; } = new List<Comment>();
+        // Navigation property
+        public ICollection<Task> AssignedTasks { get; set; } = new List<Task>();
+        public ICollection<Task> CreatedTasks { get; set; } = new List<Task>();
+        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
 	}
 
 	public class Tag
@@ -138,8 +139,10 @@ namespace TodoAppBackend
 
         // Foreign key for User
         [ForeignKey("User")]
-        public string? UserId { get; set; }
-        public User? User { get; set; }
+        public string? AssignerId { get; set; }
+        public User? Assigner { get; set; }
+        public string? AssigneeId { get; set; }
+        public User? Assignee { get; set; }
 
         // Navigation properties
         public ICollection<TaskTag> TaskTags { get; set; } = new List<TaskTag>();

@@ -40,7 +40,9 @@ namespace TodoAppBackend.Controllers
                     }).ToList(),
                     Comments = t.Comments,
                     Attachments = t.Attachments,
-                    ProjectName = t.Project.Title
+                    ProjectName = t.Project.Title,
+                    AssignerId = t.AssignerId, // Add this line
+                    AssigneeId = t.AssigneeId
                 })
                 .ToListAsync();
 
@@ -62,7 +64,9 @@ namespace TodoAppBackend.Controllers
                 CreatedAt = newTaskDto.CreatedAt,
                 Deadline = newTaskDto.Deadline,
                 Type = newTaskDto.Type,
-                ProjectId = newTaskDto.ProjectId, // Assuming ProjectName is actually ProjectId
+                ProjectId = newTaskDto.ProjectId,
+                AssignerId = newTaskDto.AssignerId, 
+                AssigneeId = newTaskDto.AssigneeId, 
                 Comments = newTaskDto.Comments,
                 Attachments = newTaskDto.Attachments
             };
@@ -78,7 +82,6 @@ namespace TodoAppBackend.Controllers
                 }
                 else
                 {
-                    // Update the color if it has changed
                     if (tag.Color != tagDto.Color)
                     {
                         tag.Color = tagDto.Color;
@@ -106,6 +109,8 @@ namespace TodoAppBackend.Controllers
         public string[] Type { get; set; }
         public string? ProjectName { get; set; }
         public string? ProjectId { get; set; }
+        public string? AssignerId { get; set; } 
+        public string? AssigneeId { get; set; } 
         public List<TagDto> TaskTags { get; set; } = new List<TagDto>();
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();
         public ICollection<Attachment> Attachments { get; set; } = new List<Attachment>();

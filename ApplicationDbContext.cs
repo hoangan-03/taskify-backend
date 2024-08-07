@@ -64,6 +64,19 @@ namespace TodoAppBackend
             modelBuilder.Entity<Task>()
                 .Property(e => e.Type)
                 .HasConversion(stringArrayConverter);
+
+            modelBuilder.Entity<Task>()
+            .HasOne(t => t.Assigner)
+            .WithMany(u => u.CreatedTasks)
+            .HasForeignKey(t => t.AssignerId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Task>()
+                .HasOne(t => t.Assignee)
+                .WithMany(u => u.AssignedTasks)
+                .HasForeignKey(t => t.AssigneeId)
+                .OnDelete(DeleteBehavior.Restrict);
+
         }
 
     }
