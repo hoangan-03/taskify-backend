@@ -27,11 +27,18 @@ namespace TodoAppBackend
 		checkedd,
 		uncheckedd,
 	}
+    public enum TaskState
+    {
+        inprogress,
+        completed,
+		prioritized,
+    }
 
-	public class User
+    public class User
 	{
-		[Key]
-		public string UserId { get; set; } = Guid.NewGuid().ToString();
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int? UserId { get; set; } 
 		public string? FullName { get; set; }
 
 		[Required]
@@ -66,7 +73,8 @@ namespace TodoAppBackend
 	public class Comment
 	{
 		[Key]
-		public int CommentId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int CommentId { get; set; }
 
 		[Required]
 		public CommentState State { get; set; }
@@ -79,7 +87,7 @@ namespace TodoAppBackend
 
 		// Foreign key for User
 		[ForeignKey("User")]
-		public string? UserId { get; set; }
+		public int? UserId { get; set; }
 		public User? User { get; set; }
 
 		// Foreign key for Task
@@ -90,23 +98,27 @@ namespace TodoAppBackend
 
 	public class Attachment
 	{
-		[Key]
-		public int AttachmentId { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int AttachmentId { get; set; }
 
 		[Required]
+		public string? Url { get; set; }
 		public string? Name { get; set; }
-		public AttachmentType Type { get; set; }
+		public AttachmentType FileType { get; set; }
+        public DateTime UploadedAt { get; set; } = DateTime.UtcNow;
 
-		// Foreign key for Task
-		[ForeignKey("Task")]
+        // Foreign key for Task
+        [ForeignKey("Task")]
 		public int? TaskId { get; set; }
 		public Task? Task { get; set; }
 	}
 
 	public class Project
 	{
-		[Key]
-		public string ProjectId { get; set; } = Guid.NewGuid().ToString();
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int? ProjectId { get; set; }
 
 		[Required]
 		public string? Title { get; set; }
@@ -128,20 +140,21 @@ namespace TodoAppBackend
         public string? Description { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime Deadline { get; set; }
+		public TaskState State { get; set; }
 
         [Required]
         public string[] Type { get; set; } = Array.Empty<string>();
 
         // Foreign key for Project
         [ForeignKey("Project")]
-        public string? ProjectId { get; set; }
+        public int? ProjectId { get; set; }
         public Project? Project { get; set; }
 
         // Foreign key for User
         [ForeignKey("User")]
-        public string? AssignerId { get; set; }
+        public int? AssignerId { get; set; }
         public User? Assigner { get; set; }
-        public string? AssigneeId { get; set; }
+        public int? AssigneeId { get; set; }
         public User? Assignee { get; set; }
 
         // Navigation properties

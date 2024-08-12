@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TodoAppBackend;
 
+
 namespace TodoAppBackend.Controllers
 {
     [ApiController]
@@ -19,13 +20,15 @@ namespace TodoAppBackend.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TaskDto>>> GetTasks()
+        public async Task<ActionResult<IEnumerable<TasksDto>>> GetTasks()
         {
             var tasks = await _context.Tasks
                 .Include(t => t.Project)
                 .Include(t => t.TaskTags)
                     .ThenInclude(tt => tt.Tag)
-                .Select(t => new TaskDto
+                .Include(t => t.Comments)
+                    .ThenInclude(tt => tt.User)
+                .Select(t => new TasksDto
                 {
                     Id = t.Id,
                     Title = t.Title,
@@ -33,15 +36,26 @@ namespace TodoAppBackend.Controllers
                     CreatedAt = t.CreatedAt,
                     Deadline = t.Deadline,
                     Type = t.Type,
-                    TaskTags = t.TaskTags.Select(tt => new TagDto
+                    State = t.State,
+                    TaskTags = t.TaskTags.Select(tt => new TagsDto
                     {
-                        Name = tt.Tag.TagName,
-                        Color = tt.Tag.Color
+                        Name = tt.Tag != null ? tt.Tag.TagName : null,
+                        Color = tt.Tag != null ? tt.Tag.Color : null
                     }).ToList(),
-                    Comments = t.Comments,
+                    Comments = t.Comments.Select(tt => new CommentsDto
+                    {
+                        CommentId = tt.CommentId,
+                        CommentText = tt.CommentText,
+                        State = tt.State,
+                        Timeline = tt.Timeline,
+                        TaskId = tt.TaskId,
+                        UserId = tt.UserId,
+                        User = tt.User,
+                        UserName = tt.User != null ? tt.User.FullName : null,
+                    }).ToList(),
                     Attachments = t.Attachments,
-                    ProjectName = t.Project.Title,
-                    AssignerId = t.AssignerId, // Add this line
+                    ProjectName = t.Project != null ? t.Project.Title : null,
+                    AssignerId = t.AssignerId,
                     AssigneeId = t.AssigneeId
                 })
                 .ToListAsync();
@@ -50,7 +64,7 @@ namespace TodoAppBackend.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Task>> AddTask(TaskDto newTaskDto)
+        public async Task<ActionResult<Task>> AddTask(TasksDto newTaskDto)
         {
             if (newTaskDto == null)
             {
@@ -63,11 +77,11 @@ namespace TodoAppBackend.Controllers
                 Description = newTaskDto.Description,
                 CreatedAt = newTaskDto.CreatedAt,
                 Deadline = newTaskDto.Deadline,
+                State = newTaskDto.State,
                 Type = newTaskDto.Type,
                 ProjectId = newTaskDto.ProjectId,
-                AssignerId = newTaskDto.AssignerId, 
-                AssigneeId = newTaskDto.AssigneeId, 
-                Comments = newTaskDto.Comments,
+                AssignerId = newTaskDto.AssignerId,
+                AssigneeId = newTaskDto.AssigneeId,
                 Attachments = newTaskDto.Attachments
             };
 
@@ -92,33 +106,78 @@ namespace TodoAppBackend.Controllers
                 newTask.TaskTags.Add(new TaskTag { TagId = tag.TagId, Tag = tag });
             }
 
+            foreach (var commentDto in newTaskDto.Comments)
+            {
+                var comment = new Comment
+                {
+                    CommentId = commentDto.CommentId,
+                    CommentText = commentDto.CommentText,
+                    UserId = commentDto.UserId,
+                    Timeline = commentDto.Timeline,
+                    State = commentDto.State
+                };
+                newTask.Comments.Add(comment);
+            }
+
             _context.Tasks.Add(newTask);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetTasks), new { id = newTask.Id }, newTask);
         }
-    }
+        // Add the DeleteTask method
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTask(int id)
+        {
+            var task = await _context.Tasks.FindAsync(id);
+            if (task == null)
+            {
+                return NotFound();
+            }
 
-    public class TaskDto
-    {
-        public int Id { get; set; }
-        public string? Title { get; set; }
-        public string? Description { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime Deadline { get; set; }
-        public string[] Type { get; set; }
-        public string? ProjectName { get; set; }
-        public string? ProjectId { get; set; }
-        public string? AssignerId { get; set; } 
-        public string? AssigneeId { get; set; } 
-        public List<TagDto> TaskTags { get; set; } = new List<TagDto>();
-        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
-        public ICollection<Attachment> Attachments { get; set; } = new List<Attachment>();
-    }
+            _context.Tasks.Remove(task);
+            await _context.SaveChangesAsync();
 
-    public class TagDto
-    {
-        public string Name { get; set; }
-        public string Color { get; set; }
+            return NoContent();
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateTaskState(int id, [FromBody] TasksDtoForUpdate updateTaskDto)
+        {
+            if (updateTaskDto == null || id != updateTaskDto.Id)
+            {
+                return BadRequest("Invalid Task data.");
+            }
+
+            var task = await _context.Tasks.FindAsync(id);
+            if (task == null)
+            {
+                return NotFound("Task not found.");
+            }
+
+            task.State = updateTaskDto.State;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TaskExists(id))
+                {
+                    return NotFound("Task not found.");
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        private bool TaskExists(int id)
+        {
+            return _context.Tasks.Any(e => e.Id == id);
+        }
     }
+    
 }

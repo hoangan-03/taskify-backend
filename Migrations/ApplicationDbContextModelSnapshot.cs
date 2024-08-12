@@ -30,15 +30,21 @@ namespace TodoAppBackend.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("AttachmentId"));
 
+                    b.Property<int>("FileType")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int?>("TaskId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("integer");
+                    b.Property<DateTime>("UploadedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("AttachmentId");
 
@@ -68,8 +74,8 @@ namespace TodoAppBackend.Migrations
                     b.Property<DateTime>("Timeline")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("text");
+                    b.Property<int?>("UserId")
+                        .HasColumnType("integer");
 
                     b.HasKey("CommentId");
 
@@ -82,8 +88,11 @@ namespace TodoAppBackend.Migrations
 
             modelBuilder.Entity("TodoAppBackend.Project", b =>
                 {
-                    b.Property<string>("ProjectId")
-                        .HasColumnType("text");
+                    b.Property<int?>("ProjectId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int?>("ProjectId"));
 
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("timestamp with time zone");
@@ -129,11 +138,11 @@ namespace TodoAppBackend.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("AssigneeId")
-                        .HasColumnType("text");
+                    b.Property<int?>("AssigneeId")
+                        .HasColumnType("integer");
 
-                    b.Property<string>("AssignerId")
-                        .HasColumnType("text");
+                    b.Property<int?>("AssignerId")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -144,8 +153,11 @@ namespace TodoAppBackend.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<string>("ProjectId")
-                        .HasColumnType("text");
+                    b.Property<int?>("ProjectId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("State")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -183,8 +195,11 @@ namespace TodoAppBackend.Migrations
 
             modelBuilder.Entity("TodoAppBackend.User", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("text");
+                    b.Property<int?>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int?>("UserId"));
 
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("timestamp with time zone");
