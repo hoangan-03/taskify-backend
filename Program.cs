@@ -32,10 +32,12 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors("AllowAllOrigins"); // Only enable CORS in development
 }
-
-app.UseCors("AllowAllOrigins");
-app.UseHttpsRedirection();
+else
+{
+    app.UseHttpsRedirection(); // Only enable HTTPS redirection in production
+}
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

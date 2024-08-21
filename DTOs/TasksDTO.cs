@@ -16,10 +16,21 @@
         public List<TagsDto> TaskTags { get; set; } = new List<TagsDto>();
         public List<CommentsDto> Comments { get; set; } = new List<CommentsDto>();
         public ICollection<Attachment> Attachments { get; set; } = new List<Attachment>();
+        public int? Order { get; set; }
     }
     public class TasksDtoForUpdate
     {
         public int Id { get; set; }
         public TaskState State { get; set; }
+    }
+    public class TaskOrderDto
+    {
+        public int Id { get; set; }
+        public int Order { get; set; }
+    }
+
+    public class TaskOrderUpdateDto
+    {
+        public List<TaskOrderDto> Tasks { get; set; }
     }
 }

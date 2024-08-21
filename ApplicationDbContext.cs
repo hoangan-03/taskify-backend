@@ -19,6 +19,9 @@ namespace TodoAppBackend
         public DbSet<Attachment> Attachments { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Task> Tasks { get; set; }
+        public DbSet<Event> Events { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Configure the one-to-many relationship between Project and Task
@@ -42,6 +45,27 @@ namespace TodoAppBackend
                 .WithMany(tg => tg.TaskTags)
                 .HasForeignKey(tt => tt.TagId);
 
+            // Configure many-to-many relationship between Event and User
+            modelBuilder.Entity<EventUser>()
+                .HasKey(tt => new { tt.EventId, tt.UserId });
+
+            modelBuilder.Entity<EventUser>()
+                .HasOne(tt => tt.Event)
+                .WithMany(t => t.EventUsers)
+                .HasForeignKey(tt => tt.EventId);
+
+            modelBuilder.Entity<EventUser>()
+                .HasOne(tt => tt.User)
+                .WithMany(tg => tg.EventUsers)
+                .HasForeignKey(tt => tt.UserId);
+
+
+            // Configure one-to-many relationship between Task and Event
+            modelBuilder.Entity<Event>()
+                .HasOne(c => c.Task)
+                .WithMany(t => t.Events)
+                .HasForeignKey(c => c.TaskId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             // Configure one-to-many relationship between Task and Comment
             modelBuilder.Entity<Comment>()

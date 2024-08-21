@@ -59,6 +59,7 @@ namespace TodoAppBackend.Controllers
                 return NotFound("Attachment not found.");
             }
 
+
             var filePath = Path.Combine(_attachmentsDirectory, attachment.Name);
             if (!System.IO.File.Exists(filePath))
             {

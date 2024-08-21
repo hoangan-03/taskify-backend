@@ -52,7 +52,9 @@ namespace TodoAppBackend
         public ICollection<Task> AssignedTasks { get; set; } = new List<Task>();
         public ICollection<Task> CreatedTasks { get; set; } = new List<Task>();
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();
-	}
+
+        public ICollection<EventUser> EventUsers { get; set; } = new List<EventUser>();
+    }
 
 	public class Tag
 	{
@@ -127,7 +129,7 @@ namespace TodoAppBackend
 
 		// Navigation property
 		public ICollection<Task> Tasks { get; set; } = new List<Task>();
-	}
+    }
 
     public class Task
     {
@@ -160,7 +162,9 @@ namespace TodoAppBackend
         // Navigation properties
         public ICollection<TaskTag> TaskTags { get; set; } = new List<TaskTag>();
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();
+        public ICollection<Event> Events { get; set; } = new List<Event>();
         public ICollection<Attachment> Attachments { get; set; } = new List<Attachment>();
+        public int Order { get; set; }
     }
 
     public class TaskTag
@@ -171,5 +175,49 @@ namespace TodoAppBackend
 		public int TagId { get; set; }
 		public Tag? Tag { get; set; }
 	}
+
+    public enum Color
+    {
+        blue,
+        green,
+        red,
+        purple,
+        yellow,
+        gray,
+        pink,
+    }
+    public class Event
+	{
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int EventId { get; set; }
+		public string? EventName { get; set; }
+		public string? Description { get; set; }
+        public Color? Color { get; set; }
+        public DateOnly Date { get; set; }
+        public TimeOnly StartTime { get; set; }
+        public TimeOnly EndTime { get; set; }
+        public string? Location { get; set; }
+
+        [ForeignKey("Task")]
+        public int? TaskId { get; set; }
+        public Task? Task { get; set; }
+
+        [ForeignKey("User")]
+        public int? CreatorId { get; set; }
+        public User? Creator { get; set; }
+        public ICollection<EventUser> EventUsers { get; set; } = new List<EventUser>();
+
+    }
+
+    public class EventUser
+    {
+        public int EventId { get; set; }
+        public Event? Event { get; set; }
+
+        public int UserId { get; set; }
+        public User? User { get; set; }
+    }
+
 
 }

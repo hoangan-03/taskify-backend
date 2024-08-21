@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TodoAppBackend;
@@ -11,9 +12,11 @@ using TodoAppBackend;
 namespace TodoAppBackend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240813035741_updateStatee")]
+    partial class updateStatee
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,65 +87,6 @@ namespace TodoAppBackend.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Comments");
-                });
-
-            modelBuilder.Entity("TodoAppBackend.Event", b =>
-                {
-                    b.Property<int>("EventId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("EventId"));
-
-                    b.Property<int?>("Color")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("CreatorId")
-                        .HasColumnType("integer");
-
-                    b.Property<DateOnly>("Date")
-                        .HasColumnType("date");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
-
-                    b.Property<TimeOnly>("EndTime")
-                        .HasColumnType("time without time zone");
-
-                    b.Property<string>("EventName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Location")
-                        .HasColumnType("text");
-
-                    b.Property<TimeOnly>("StartTime")
-                        .HasColumnType("time without time zone");
-
-                    b.Property<int?>("TaskId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("EventId");
-
-                    b.HasIndex("CreatorId");
-
-                    b.HasIndex("TaskId");
-
-                    b.ToTable("Events");
-                });
-
-            modelBuilder.Entity("TodoAppBackend.EventUser", b =>
-                {
-                    b.Property<int>("EventId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("EventId", "UserId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("EventUser");
                 });
 
             modelBuilder.Entity("TodoAppBackend.Project", b =>
@@ -308,41 +252,6 @@ namespace TodoAppBackend.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("TodoAppBackend.Event", b =>
-                {
-                    b.HasOne("TodoAppBackend.User", "Creator")
-                        .WithMany()
-                        .HasForeignKey("CreatorId");
-
-                    b.HasOne("TodoAppBackend.Task", "Task")
-                        .WithMany("Events")
-                        .HasForeignKey("TaskId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Creator");
-
-                    b.Navigation("Task");
-                });
-
-            modelBuilder.Entity("TodoAppBackend.EventUser", b =>
-                {
-                    b.HasOne("TodoAppBackend.Event", "Event")
-                        .WithMany("EventUsers")
-                        .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TodoAppBackend.User", "User")
-                        .WithMany("EventUsers")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Event");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("TodoAppBackend.Task", b =>
                 {
                     b.HasOne("TodoAppBackend.User", "Assignee")
@@ -386,11 +295,6 @@ namespace TodoAppBackend.Migrations
                     b.Navigation("Task");
                 });
 
-            modelBuilder.Entity("TodoAppBackend.Event", b =>
-                {
-                    b.Navigation("EventUsers");
-                });
-
             modelBuilder.Entity("TodoAppBackend.Project", b =>
                 {
                     b.Navigation("Tasks");
@@ -407,8 +311,6 @@ namespace TodoAppBackend.Migrations
 
                     b.Navigation("Comments");
 
-                    b.Navigation("Events");
-
                     b.Navigation("TaskTags");
                 });
 
@@ -419,8 +321,6 @@ namespace TodoAppBackend.Migrations
                     b.Navigation("Comments");
 
                     b.Navigation("CreatedTasks");
-
-                    b.Navigation("EventUsers");
                 });
 #pragma warning restore 612, 618
         }

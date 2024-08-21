@@ -56,7 +56,8 @@ namespace TodoAppBackend.Controllers
                     Attachments = t.Attachments,
                     ProjectName = t.Project != null ? t.Project.Title : null,
                     AssignerId = t.AssignerId,
-                    AssigneeId = t.AssigneeId
+                    AssigneeId = t.AssigneeId,
+                    Order = t.Order,
                 })
                 .ToListAsync();
 
@@ -124,7 +125,38 @@ namespace TodoAppBackend.Controllers
 
             return CreatedAtAction(nameof(GetTasks), new { id = newTask.Id }, newTask);
         }
-        // Add the DeleteTask method
+        [HttpPost("save-task-order")]
+        public async Task<ActionResult> SaveTaskOrder(TaskOrderUpdateDto taskOrderUpdateDto)
+        {
+            if (taskOrderUpdateDto == null || taskOrderUpdateDto.Tasks == null || !taskOrderUpdateDto.Tasks.Any())
+            {
+                return BadRequest(new { message = "Task order is null or empty." });
+            }
+
+            try
+            {
+                foreach (var taskOrderDto in taskOrderUpdateDto.Tasks)
+                {
+                    var task = await _context.Tasks.FindAsync(taskOrderDto.Id);
+                    if (task == null)
+                    {
+                        return NotFound(new { message = $"Task with ID {taskOrderDto.Id} not found." });
+                    }
+
+                    task.Order = taskOrderDto.Order;
+                    _context.Tasks.Update(task);
+                }
+
+                await _context.SaveChangesAsync();
+
+                return Ok(new { message = "Task order saved successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "An error occurred while saving the task order.", details = ex.Message });
+            }
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTask(int id)
         {
