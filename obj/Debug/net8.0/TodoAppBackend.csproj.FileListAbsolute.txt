@@ -137,3 +137,4 @@ C:\Users\John\source\repos\TodoAppBackend\bin\Debug\net8.0\zh-Hant\Microsoft.Cod
 C:\Users\John\source\repos\TodoAppBackend\bin\Debug\net8.0\Npgsql.dll
 C:\Users\John\source\repos\TodoAppBackend\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Users\John\source\repos\TodoAppBackend\obj\Debug\net8.0\TodoAppBackend.sourcelink.json
+C:\Users\John\source\repos\TodoAppBackend\bin\Debug\net8.0\BCrypt.Net-Next.dll
