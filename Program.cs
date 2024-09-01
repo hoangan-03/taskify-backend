@@ -1,22 +1,29 @@
 using Microsoft.EntityFrameworkCore;
 using TodoAppBackend;
+using TodoAppBackend.Services;
+using Microsoft.AspNetCore.SignalR;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IAuthService, AuthService>(); // Register IAuthService
 
 builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAllOrigins",
+    options.AddPolicy("AllowSpecificOrigin",
         builder => builder
-            .AllowAnyOrigin()
+            .WithOrigins("http://localhost:4200")
             .AllowAnyHeader()
-            .AllowAnyMethod());
+            .AllowAnyMethod()
+            .AllowCredentials()); 
 });
+
+builder.Services.AddSignalR();
+
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -32,14 +39,16 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.UseCors("AllowAllOrigins"); // Only enable CORS in development
+    app.UseCors("AllowSpecificOrigin");
 }
 else
 {
     app.UseHttpsRedirection(); // Only enable HTTPS redirection in production
 }
+
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+app.MapHub<ChatHub>("/chathub");
 
 app.Run();

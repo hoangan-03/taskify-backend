@@ -5,6 +5,7 @@ using TodoAppBackend.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TodoAppBackend;
+
 namespace TodoAppBackend.Controllers
 {
     [ApiController]
@@ -23,49 +24,75 @@ namespace TodoAppBackend.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<UserDTO>> Register(UserRegisterDTO userForRegisterDto)
         {
-            if (await _authService.UserExists(userForRegisterDto.Email))
-                return BadRequest("Email is already in use.");
-
-            var user = await _authService.Register(userForRegisterDto.Email, userForRegisterDto.Password);
-
-            return Ok(new UserDTO
+            try
             {
-                Id = user.UserId ?? 0,
-                Email = user.Email,
-                Token = _authService.GenerateJwtToken(user)
-            });
+                if (await _authService.UserExists(userForRegisterDto.Email))
+                    return BadRequest("Email is already in use.");
+
+                var user = await _authService.Register(userForRegisterDto.FullName,userForRegisterDto.Email, userForRegisterDto.Password);
+
+                return Ok(new UserDTO
+                {
+                    FullName = user.FullName,
+                    Id = user.UserId ?? 0,
+                    Email = user.Email,
+                    
+                });
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (you can use a logging framework here)
+                Console.Error.WriteLine($"Error in Register: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
         }
 
         [HttpPost("login")]
         public async Task<ActionResult<UserDTO>> Login(UserLoginDto userForLoginDto)
         {
-            var user = await _authService.Login(userForLoginDto.Email, userForLoginDto.Password);
-
-            if (user == null)
-                return Unauthorized("Invalid email or password.");
-
-            return Ok(new UserDTO
+            try
             {
-                Id = user.UserId ?? 0,
-                Email = user.Email,
-                Token = _authService.GenerateJwtToken(user)
-            });
+                var user = await _authService.Login(userForLoginDto.Email, userForLoginDto.Password);
+
+                if (user == null)
+                    return Unauthorized("Invalid email or password.");
+
+                return Ok(new UserDTO
+                {
+                    Id = user.UserId ?? 0,
+                    Email = user.Email,
+                });
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (you can use a logging framework here)
+                Console.Error.WriteLine($"Error in Login: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
         }
 
         [HttpPost("google-login")]
         public async Task<ActionResult<UserDTO>> GoogleLogin(GoogleLoginDTO googleLoginDto)
         {
-            var user = await _authService.GoogleLogin(googleLoginDto.TokenId);
-
-            if (user == null)
-                return Unauthorized("Google login failed.");
-
-            return Ok(new UserDTO
+            try
             {
-                Id = user.UserId ?? 0,
-                Email = user.Email,
-                Token = _authService.GenerateJwtToken(user)
-            });
+                var user = await _authService.GoogleLogin(googleLoginDto.TokenId);
+
+                if (user == null)
+                    return Unauthorized("Google login failed.");
+
+                return Ok(new UserDTO
+                {
+                    Id = user.UserId ?? 0,
+                    Email = user.Email,
+                });
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (you can use a logging framework here)
+                Console.Error.WriteLine($"Error in GoogleLogin: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
         }
     }
 }

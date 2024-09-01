@@ -20,18 +20,40 @@ namespace TodoAppBackend.Services
             _configuration = configuration;
         }
 
-        public async Task<User> Register(string email, string password)
+        public async Task<User> Register(string fullname, string email, string password)
         {
-            var user = new User
+            if (string.IsNullOrEmpty(email))
+                throw new ArgumentException("Email cannot be null or empty", nameof(email));
+            if (string.IsNullOrEmpty(password))
+                throw new ArgumentException("Password cannot be null or empty", nameof(password));
+
+            try
             {
-                Email = email,
-                Password = BCrypt.Net.BCrypt.HashPassword(password)
-            };
+                var user = new User
+                {
+                    Email = email,
+                    Password = BCrypt.Net.BCrypt.HashPassword(password),
+                    CreateAt = DateTime.UtcNow,
+                    FullName = fullname
+                };
 
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
 
-            return user;
+                return user;
+            }
+            catch (DbUpdateException ex)
+            {
+                // Log the exception (you can use a logging framework here)
+                Console.Error.WriteLine($"Database error in Register: {ex.Message}");
+                throw new Exception("A database error occurred while registering the user.");
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (you can use a logging framework here)
+                Console.Error.WriteLine($"Error in Register: {ex.Message}");
+                throw new Exception("An error occurred while registering the user.");
+            }
         }
 
         public async Task<User> Login(string email, string password)
@@ -41,7 +63,7 @@ namespace TodoAppBackend.Services
             if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.Password))
                 return null;
 
-            return user;
+            return user;    
         }
 
         public async Task<User> GoogleLogin(string tokenId)

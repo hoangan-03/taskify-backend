@@ -47,13 +47,25 @@ namespace TodoAppBackend
 		[Required]
 		public string? Password { get; set; }
 		public DateTime CreateAt { get; set; } = DateTime.UtcNow;
-
-        // Navigation property
         public ICollection<Task> AssignedTasks { get; set; } = new List<Task>();
         public ICollection<Task> CreatedTasks { get; set; } = new List<Task>();
+        public ICollection<Message> MessageReceived { get; set; } = new List<Message>();
+        public ICollection<Message> MessageSent { get; set; } = new List<Message>();
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();
-
         public ICollection<EventUser> EventUsers { get; set; } = new List<EventUser>();
+    }
+    public class Message
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int? MessageId { get; set; }
+        public string? MessageText { get; set; }
+        public int ReceiverId { get; set; }
+        public User? Receiver { get; set; }
+        public int SenderId { get; set; }
+        public User? Sender { get; set; }
+        public DateTime Timeline { get; set; }
+
     }
 
 	public class Tag
@@ -67,8 +79,6 @@ namespace TodoAppBackend
 
 		[Required]
 		public string? Color { get; set; }
-
-		// Navigation property
 		public ICollection<TaskTag> TaskTags { get; set; } = new List<TaskTag>();
 	}
 
@@ -126,8 +136,6 @@ namespace TodoAppBackend
 		public string? Title { get; set; }
 		public string? Description { get; set; }
 		public DateTime CreateAt { get; set; } = DateTime.UtcNow;
-
-		// Navigation property
 		public ICollection<Task> Tasks { get; set; } = new List<Task>();
     }
 
@@ -158,8 +166,6 @@ namespace TodoAppBackend
         public User? Assigner { get; set; }
         public int? AssigneeId { get; set; }
         public User? Assignee { get; set; }
-
-        // Navigation properties
         public ICollection<TaskTag> TaskTags { get; set; } = new List<TaskTag>();
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();
         public ICollection<Event> Events { get; set; } = new List<Event>();
@@ -214,7 +220,6 @@ namespace TodoAppBackend
     {
         public int EventId { get; set; }
         public Event? Event { get; set; }
-
         public int UserId { get; set; }
         public User? User { get; set; }
     }

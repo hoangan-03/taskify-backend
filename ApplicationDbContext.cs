@@ -20,10 +20,26 @@ namespace TodoAppBackend
         public DbSet<Project> Projects { get; set; }
         public DbSet<Task> Tasks { get; set; }
         public DbSet<Event> Events { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            // Configure the one-to-many relationship between User and Message
+            modelBuilder.Entity<Message>()
+                .HasOne(t => t.Sender)
+                .WithMany(p => p.MessageSent)
+                .HasForeignKey(t => t.SenderId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Configure the one-to-many relationship between User and Message
+            modelBuilder.Entity<Message>()
+                .HasOne(t => t.Receiver)
+                .WithMany(p => p.MessageReceived)
+                .HasForeignKey(t => t.ReceiverId)
+                .OnDelete(DeleteBehavior.Cascade);
+
             // Configure the one-to-many relationship between Project and Task
             modelBuilder.Entity<Task>()
                 .HasOne(t => t.Project)
