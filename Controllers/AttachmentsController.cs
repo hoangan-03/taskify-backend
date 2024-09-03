@@ -76,12 +76,25 @@ namespace TodoAppBackend.Controllers
             return File(memory, GetContentType(filePath), attachment.Name);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAllAttachments()
+        {
+            var attachments = await _context.Attachments.ToListAsync();
+            if (attachments == null || !attachments.Any())
+            {
+                return NotFound("No attachments found.");
+            }
+
+            return Ok(attachments);
+        }
+
         private string GetContentType(string path)
         {
             var types = GetMimeTypes();
             var ext = Path.GetExtension(path).ToLowerInvariant();
             return types[ext];
         }
+
 
         private Dictionary<string, string> GetMimeTypes()
         {
