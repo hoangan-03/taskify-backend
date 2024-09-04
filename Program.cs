@@ -39,16 +39,16 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.UseCors("AllowSpecificOrigin");
+    
 }
 else
 {
-    app.UseHttpsRedirection(); // Only enable HTTPS redirection in production
+   
 }
-
+app.UseCors("AllowSpecificOrigin");
+app.UseHttpsRedirection(); // Enable HTTPS redirection in production
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.MapHub<ChatHub>("/chathub");
-
 app.Run();
