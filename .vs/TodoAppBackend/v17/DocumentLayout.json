@@ -38,8 +38,7 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAABZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-04T05:01:28.602Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-04T05:01:28.602Z"
             },
             {
               "$type": "Document",
@@ -49,7 +48,7 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAB8AAAAAAAAAAAAwwDQAAAAgAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-31T05:28:32.838Z",
               "EditorCaption": ""
