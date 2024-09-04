@@ -7,6 +7,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using BCrypt.Net;
+using Google.Apis.Auth;
 namespace TodoAppBackend.Services
 {
     public class AuthService : IAuthService
@@ -68,16 +69,33 @@ namespace TodoAppBackend.Services
 
         public async Task<User> GoogleLogin(string tokenId)
         {
-            // Implement Google login logic here
-            // For example, verify the token with Google's API and retrieve user information
+            try
+            {
+                var payload = await GoogleJsonWebSignature.ValidateAsync(tokenId, new GoogleJsonWebSignature.ValidationSettings
+                {
+                    Audience = new[] { _configuration["GoogleAuth:ClientId"] }
+                });
 
-            return null; // Replace with actual implementation
+                if (payload == null)
+                {
+                    return null;
+                }
+
+                var user = await _context.Users.SingleOrDefaultAsync(u => u.Email == payload.Email);
+              
+
+                return user;
+            }
+            catch (InvalidJwtException)
+            {
+                return null;
+            }
         }
-
         public async Task<bool> UserExists(string email)
         {
             return await _context.Users.AnyAsync(u => u.Email == email);
         }
+
 
         public string GenerateJwtToken(User user)
         {
