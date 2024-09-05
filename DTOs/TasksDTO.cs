@@ -18,6 +18,19 @@
         public ICollection<Attachment> Attachments { get; set; } = new List<Attachment>();
         public int? Order { get; set; }
     }
+    public class TasksDTOForModify
+    {
+        public int Id { get; set; }
+        public string? Title { get; set; }
+        public string? Description { get; set; }
+        public DateTime Deadline { get; set; }
+        public TaskState State { get; set; }
+        public string[]? Type { get; set; }
+        public int? ProjectId { get; set; }
+        public int? AssignerId { get; set; }
+        public int? AssigneeId { get; set; }
+        public ICollection<Attachment> Attachments { get; set; } = new List<Attachment>();
+    }
     public class TasksDtoForUpdate
     {
         public int Id { get; set; }

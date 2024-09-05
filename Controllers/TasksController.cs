@@ -125,6 +125,47 @@ namespace TodoAppBackend.Controllers
 
             return CreatedAtAction(nameof(GetTasks), new { id = newTask.Id }, newTask);
         }
+        [HttpPut("modify/{id}")]
+        public async Task<IActionResult> UpdateTask(int id, [FromBody] TasksDTOForModify updateTaskDto)
+        {
+            if (updateTaskDto == null || id != updateTaskDto.Id)
+            {
+                return BadRequest("Invalid Task data.");
+            }
+
+            var task = await _context.Tasks.FindAsync(id);
+            if (task == null)
+            {
+                return NotFound("Task not found.");
+            }
+
+            task.Title = updateTaskDto.Title;
+            task.Description = updateTaskDto.Description;
+            task.Deadline = updateTaskDto.Deadline;
+            task.State = updateTaskDto.State;
+            task.Type = updateTaskDto.Type;
+            task.ProjectId = updateTaskDto.ProjectId;
+            task.AssignerId = updateTaskDto.AssignerId;
+            task.AssigneeId = updateTaskDto.AssigneeId;
+            task.Attachments = updateTaskDto.Attachments;
+            
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TaskExists(id))
+                {
+                    return NotFound("Task not found.");
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return NoContent();
+        }
         [HttpPost("save-task-order")]
         public async Task<ActionResult> SaveTaskOrder(TaskOrderUpdateDto taskOrderUpdateDto)
         {

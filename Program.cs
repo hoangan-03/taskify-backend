@@ -8,8 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<IAuthService, AuthService>(); // Register IAuthService
-
+builder.Services.AddScoped<IAuthService, AuthService>(); 
 builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
@@ -46,7 +45,7 @@ else
    
 }
 app.UseCors("AllowSpecificOrigin");
-app.UseHttpsRedirection(); // Enable HTTPS redirection in production
+app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
