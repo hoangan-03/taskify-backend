@@ -42,10 +42,10 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
-   
+    app.UseHttpsRedirection();
 }
 app.UseCors("AllowSpecificOrigin");
-app.UseHttpsRedirection();
+
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

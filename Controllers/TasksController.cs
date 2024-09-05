@@ -128,21 +128,15 @@ namespace TodoAppBackend.Controllers
         [HttpPut("modify/{id}")]
         public async Task<IActionResult> UpdateTask(int id, [FromBody] TasksDTOForModify updateTaskDto)
         {
-            if (updateTaskDto == null || id != updateTaskDto.Id)
-            {
-                return BadRequest("Invalid Task data.");
-            }
-
             var task = await _context.Tasks.FindAsync(id);
             if (task == null)
             {
-                return NotFound("Task not found.");
+                return NotFound(new { message = "Task not found." });
             }
 
             task.Title = updateTaskDto.Title;
             task.Description = updateTaskDto.Description;
             task.Deadline = updateTaskDto.Deadline;
-            task.State = updateTaskDto.State;
             task.Type = updateTaskDto.Type;
             task.ProjectId = updateTaskDto.ProjectId;
             task.AssignerId = updateTaskDto.AssignerId;
@@ -157,7 +151,7 @@ namespace TodoAppBackend.Controllers
             {
                 if (!TaskExists(id))
                 {
-                    return NotFound("Task not found.");
+                    return NotFound(new { message = "Task not found." });
                 }
                 else
                 {
