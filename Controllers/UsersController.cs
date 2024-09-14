@@ -36,5 +36,19 @@ namespace TodoAppBackend.Controllers
 
             return user;
         }
+        [HttpPut("modify/{id}")]
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] UserDTOUpdate updateUser)
+        {
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound(new { message = "User not found." });
+            }
+            user.FullName = updateUser.FullName;
+            user.Email = updateUser.Email;
+            await _context.SaveChangesAsync();
+            return NoContent();
+
+        }
     }
 }
