@@ -14,11 +14,13 @@ namespace TodoAppBackend.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IAuthService _authService;
+        private readonly IEmailService _emailService;
 
-        public AuthController(ApplicationDbContext context, IAuthService authService)
+        public AuthController(ApplicationDbContext context, IAuthService authService, IEmailService emailService)
         {
             _context = context;
             _authService = authService;
+            _emailService = emailService;
         }
 
         [HttpPost("register")]
@@ -30,7 +32,8 @@ namespace TodoAppBackend.Controllers
                     return BadRequest("Email is already in use.");
 
                 var user = await _authService.Register(userForRegisterDto.FullName,userForRegisterDto.Email, userForRegisterDto.Password);
-
+                var emailBody = "<h1>Welcome to our platform!</h1><p>Thank you for registering.</p>";
+                await _emailService.SendEmailAsync(userForRegisterDto.Email, "Welcome to Our Platform", emailBody);
                 return Ok(new UserDTO
                 {
                     FullName = user.FullName,

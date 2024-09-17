@@ -21,6 +21,9 @@ builder.Services.AddCors(options =>
             .AllowCredentials()); 
 });
 
+builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
+builder.Services.AddTransient<IEmailService, EmailService>();
+
 builder.Services.AddSignalR();
 
 builder.Services.AddControllers()
