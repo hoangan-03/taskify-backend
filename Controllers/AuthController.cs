@@ -32,6 +32,7 @@ namespace TodoAppBackend.Controllers
                     return BadRequest("Email is already in use.");
 
                 var user = await _authService.Register(userForRegisterDto.FullName,userForRegisterDto.Email, userForRegisterDto.Password);
+                
                 var emailBody = "<h1>Welcome to our platform!</h1><p>Thank you for registering.</p>";
                 await _emailService.SendEmailAsync(userForRegisterDto.Email, "Welcome to Our Platform", emailBody);
                 return Ok(new UserDTO

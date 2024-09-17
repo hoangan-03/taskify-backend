@@ -44,7 +44,6 @@ namespace TodoAppBackend.Controllers
 
             var attachmentUrl = $"{Request.Scheme}://{Request.Host}/api/attachments/{file.FileName}";
 
-            // Log the generated URL to ensure it is correct
             Console.WriteLine($"Generated attachment URL: {attachmentUrl}");
 
             return Ok(new { Url = attachmentUrl });

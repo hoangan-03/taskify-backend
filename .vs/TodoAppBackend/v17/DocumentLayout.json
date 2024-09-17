@@ -7,12 +7,20 @@
       "RelativeMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|c:\\users\\john\\source\\repos\\todoappbackend\\dtos\\userregisterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|solutionrelative:dtos\\userregisterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|c:\\users\\john\\source\\repos\\todoappbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|c:\\users\\john\\source\\repos\\todoappbackend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|c:\\users\\john\\source\\repos\\todoappbackend\\controllers\\attachmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|solutionrelative:controllers\\attachmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|c:\\users\\john\\source\\repos\\todoappbackend\\controllers\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -33,10 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|c:\\users\\john\\source\\repos\\todoappbackend\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|c:\\users\\john\\source\\repos\\todoappbackend\\controllers\\attachmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|solutionrelative:controllers\\attachmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|c:\\users\\john\\source\\repos\\todoappbackend\\.editorconfig||{68B46364-D378-42F2-9E72-37D86C5F4468}",
@@ -75,10 +79,6 @@
       "RelativeMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|solutionrelative:dtos\\messagesentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|c:\\users\\john\\source\\repos\\todoappbackend\\dtos\\userregisterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|solutionrelative:dtos\\userregisterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|c:\\users\\john\\source\\repos\\todoappbackend\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
       "RelativeMoniker": "D:0:0:{0B9B1B13-923D-4E3C-900D-177A8E09FA97}|TodoAppBackend.csproj|solutionrelative:readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     },
@@ -106,20 +106,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
               "ToolTip": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\Controllers\\AuthController.cs",
               "RelativeToolTip": "Controllers\\AuthController.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAsAAAAfAAAA",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAkwCoAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-17T10:12:52.588Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "ChatHub.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\Controllers\\ChatHub.cs",
               "RelativeDocumentMoniker": "Controllers\\ChatHub.cs",
@@ -127,18 +127,17 @@
               "RelativeToolTip": "Controllers\\ChatHub.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T10:12:52.109Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-17T10:12:52.109Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 4,
               "Title": "AttachmentsController.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\Controllers\\AttachmentsController.cs",
               "RelativeDocumentMoniker": "Controllers\\AttachmentsController.cs",
               "ToolTip": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\Controllers\\AttachmentsController.cs",
               "RelativeToolTip": "Controllers\\AttachmentsController.cs",
-              "ViewState": "AQIAABwAAAAAAAAAAAA0wAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-14T20:09:04.498Z",
               "EditorCaption": ""
@@ -151,14 +150,14 @@
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AQIAAAoAAAAAAAAAAAA8wBkAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-09-14T20:08:47.563Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 1,
               "Title": "UserRegisterDTO.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\DTOs\\UserRegisterDTO.cs",
               "RelativeDocumentMoniker": "DTOs\\UserRegisterDTO.cs",
@@ -166,11 +165,12 @@
               "RelativeToolTip": "DTOs\\UserRegisterDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-14T10:28:26.018Z"
+              "WhenOpened": "2024-09-14T10:28:26.018Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -183,7 +183,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "EventsController.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\Controllers\\EventsController.cs",
               "RelativeDocumentMoniker": "Controllers\\EventsController.cs",
@@ -191,12 +191,11 @@
               "RelativeToolTip": "Controllers\\EventsController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-05T11:25:02.085Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-05T11:25:02.085Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "ProjectsController.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\Controllers\\ProjectsController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProjectsController.cs",
@@ -204,12 +203,11 @@
               "RelativeToolTip": "Controllers\\ProjectsController.cs",
               "ViewState": "AQIAAAwAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-05T11:25:00.912Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-05T11:25:00.912Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
@@ -217,12 +215,11 @@
               "RelativeToolTip": "Controllers\\UsersController.cs",
               "ViewState": "AQIAACEAAAAAAAAAAAAAwDMAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-14T10:23:52.728Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-14T10:23:52.728Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "MessagesController.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\Controllers\\MessagesController.cs",
               "RelativeDocumentMoniker": "Controllers\\MessagesController.cs",
@@ -230,12 +227,11 @@
               "RelativeToolTip": "Controllers\\MessagesController.cs",
               "ViewState": "AQIAABgAAAAAAAAAAAA+wAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-05T11:25:01.435Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-05T11:25:01.435Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "MessageSentDTO.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\DTOs\\MessageSentDTO.cs",
               "RelativeDocumentMoniker": "DTOs\\MessageSentDTO.cs",
@@ -247,7 +243,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "GoogleLoginDTO.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\DTOs\\GoogleLoginDTO.cs",
               "RelativeDocumentMoniker": "DTOs\\GoogleLoginDTO.cs",
@@ -259,7 +255,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "UserDTOUpdate.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\DTOs\\UserDTOUpdate.cs",
               "RelativeDocumentMoniker": "DTOs\\UserDTOUpdate.cs",
@@ -271,7 +267,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": ".gitattributes",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\.gitattributes",
               "RelativeDocumentMoniker": ".gitattributes",
@@ -283,7 +279,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": ".editorconfig",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\.editorconfig",
               "RelativeDocumentMoniker": ".editorconfig",
@@ -294,7 +290,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "ApplicationDbContext.cs",
@@ -306,7 +302,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "TasksController.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\Controllers\\TasksController.cs",
               "RelativeDocumentMoniker": "Controllers\\TasksController.cs",
@@ -318,7 +314,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "UserDTO.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\DTOs\\UserDTO.cs",
               "RelativeDocumentMoniker": "DTOs\\UserDTO.cs",
@@ -330,7 +326,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "Models.cs",
               "DocumentMoniker": "C:\\Users\\John\\source\\repos\\TodoAppBackend\\Models.cs",
               "RelativeDocumentMoniker": "Models.cs",
