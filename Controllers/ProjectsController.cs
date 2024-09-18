@@ -24,12 +24,25 @@ namespace TodoAppBackend.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Project>> CreateProject(Project project)
+        public async Task<ActionResult<Project>> CreateProject(ProjectDTO newProjectDto)
         {
-            _context.Projects.Add(project);
+            if (newProjectDto == null)
+            {
+                return BadRequest("Project is null.");
+            }
+
+            var newProject = new Project
+            {
+                Title = newProjectDto.Title,
+                Description = newProjectDto.Description,
+                CreateAt = newProjectDto.CreateAt,
+                Tasks = new List<Task>()
+            };
+
+            _context.Projects.Add(newProject);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetProjects), new { id = project.ProjectId }, project);
+            return CreatedAtAction(nameof(GetProjects), new { id = newProject.ProjectId }, newProject);
         }
     }
 }
