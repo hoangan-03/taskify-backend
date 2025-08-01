@@ -1,5 +1,3 @@
-using System.Threading.Tasks;
-
 namespace TodoAppBackend.Services
 {
     public interface IAuthService

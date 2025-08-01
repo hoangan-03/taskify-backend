@@ -1,10 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
-using TodoAppBackend;
-using TodoAppBackend.Controllers;
 
 namespace TodoAppBackend.Controllers
 {

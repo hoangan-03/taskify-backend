@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TodoAppBackend;
 using TodoAppBackend.Services;
-using Microsoft.AspNetCore.SignalR;
 
 var builder = WebApplication.CreateBuilder(args);
 
