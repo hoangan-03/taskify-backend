@@ -65,6 +65,7 @@ namespace TodoAppBackend.Controllers
                 {
                     Id = user.UserId ?? 0,
                     Email = user.Email,
+                    FullName = user.FullName ?? string.Empty // Fix: set required FullName property
                 });
             }
             catch (Exception ex)
@@ -89,6 +90,7 @@ namespace TodoAppBackend.Controllers
                 {
                     Id = user.UserId ?? 0,
                     Email = user.Email,
+                    FullName = user.FullName ?? string.Empty
                 });
             }
             catch (Exception ex)

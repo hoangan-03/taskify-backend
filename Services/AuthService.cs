@@ -57,7 +57,7 @@ namespace TodoAppBackend.Services
             }
         }
 
-        public async Task<User> Login(string email, string password)
+        public async Task<User?> Login(string email, string password)
         {
             var user = await _context.Users.SingleOrDefaultAsync(u => u.Email == email);
 
@@ -67,7 +67,7 @@ namespace TodoAppBackend.Services
             return user;    
         }
 
-        public async Task<User> GoogleLogin(string tokenId)
+        public async Task<User?> GoogleLogin(string tokenId)
         {
             try
             {
@@ -101,11 +101,11 @@ namespace TodoAppBackend.Services
         {
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+                new Claim(JwtRegisteredClaimNames.Sub, user.Email ?? ""),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"] ?? ""));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(

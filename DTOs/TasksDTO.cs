@@ -43,6 +43,6 @@
 
     public class TaskOrderUpdateDto
     {
-        public List<TaskOrderDto> Tasks { get; set; }
+        public required List<TaskOrderDto> Tasks { get; set; }
     }
 }

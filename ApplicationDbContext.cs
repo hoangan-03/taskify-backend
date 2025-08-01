@@ -97,9 +97,10 @@ namespace TodoAppBackend
                 .HasForeignKey(a => a.TaskId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            // Fix for CS8600 and CS8603: Ensure that JsonSerializer.Deserialize never returns null by using the null-coalescing operator.
             var stringArrayConverter = new ValueConverter<string[], string>(
-           v => JsonSerializer.Serialize(v, (JsonSerializerOptions)null),
-           v => JsonSerializer.Deserialize<string[]>(v, (JsonSerializerOptions)null));
+                v => JsonSerializer.Serialize(v, null as JsonSerializerOptions),
+                v => JsonSerializer.Deserialize<string[]>(v, null as JsonSerializerOptions) ?? Array.Empty<string>());
 
             modelBuilder.Entity<Task>()
                 .Property(e => e.Type)

@@ -24,25 +24,25 @@ namespace TodoAppBackend.Controllers
             var tasks = await _context.Events
                 .Include(e => e.EventUsers)
                     .ThenInclude(eu => eu.User)
-            .Select(e => new
-            {
-                e.EventId,
-                e.EventName,
-                e.Description,
-                e.Color,
-                e.Date,
-                e.StartTime,
-                e.EndTime,
-                e.Location,
-                e.TaskId,
-                e.CreatorId,
-                EventUsers = e.EventUsers.Select(eu => new
+                .Select(e => new
                 {
-                    eu.UserId,
-                    FullName = eu.User.FullName
-                }).ToList()
-            })
-            .ToListAsync();
+                    e.EventId,
+                    e.EventName,
+                    e.Description,
+                    e.Color,
+                    e.Date,
+                    e.StartTime,
+                    e.EndTime,
+                    e.Location,
+                    e.TaskId,
+                    e.CreatorId,
+                    EventUsers = e.EventUsers.Select(eu => new
+                    {
+                        eu.UserId,
+                        FullName = eu.User != null ? eu.User.FullName : string.Empty
+                    }).ToList()
+                })
+                .ToListAsync();
             return Ok(tasks);
         }
 
