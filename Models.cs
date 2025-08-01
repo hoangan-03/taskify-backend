@@ -6,47 +6,47 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TodoAppBackend
 {
-	public enum AttachmentType
-	{
-		PDF,
-		DOCX,
-		XLSX,
-		PPTX,
-		PNG,
-		JPG,
-		GIF,
-		DOC,
-		XLS,
-		PPT,
-		XML,
-		MD,
-	}
+    public enum AttachmentType
+    {
+        PDF,
+        DOCX,
+        XLSX,
+        PPTX,
+        PNG,
+        JPG,
+        GIF,
+        DOC,
+        XLS,
+        PPT,
+        XML,
+        MD,
+    }
 
-	public enum CommentState
-	{
-		checkedd,
-		uncheckedd,
-	}
+    public enum CommentState
+    {
+        checkedd,
+        uncheckedd,
+    }
     public enum TaskState
     {
         inprogress,
         completed,
-		prioritized,
+        prioritized,
     }
 
     public class User
-	{
+    {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int? UserId { get; set; } 
-		public string? FullName { get; set; }
+        public int? UserId { get; set; }
+        public string? FullName { get; set; }
 
-		[Required]
-		public string? Email { get; set; }
+        [Required]
+        public string? Email { get; set; }
 
-		[Required]
-		public string? Password { get; set; }
-		public DateTime CreateAt { get; set; } = DateTime.UtcNow;
+        [Required]
+        public string? Password { get; set; }
+        public DateTime CreateAt { get; set; } = DateTime.UtcNow;
         public ICollection<Task> AssignedTasks { get; set; } = new List<Task>();
         public ICollection<Task> CreatedTasks { get; set; } = new List<Task>();
         public ICollection<Message> MessageReceived { get; set; } = new List<Message>();
@@ -68,75 +68,75 @@ namespace TodoAppBackend
 
     }
 
-	public class Tag
-	{
+    public class Tag
+    {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TagId { get; set; }
 
-		[Required]
-		public string? TagName { get; set; }
+        [Required]
+        public string? TagName { get; set; }
 
-		[Required]
-		public string? Color { get; set; }
-		public ICollection<TaskTag> TaskTags { get; set; } = new List<TaskTag>();
-	}
+        [Required]
+        public string? Color { get; set; }
+        public ICollection<TaskTag> TaskTags { get; set; } = new List<TaskTag>();
+    }
 
-	public class Comment
-	{
-		[Key]
+    public class Comment
+    {
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CommentId { get; set; }
 
-		[Required]
-		public CommentState State { get; set; }
+        [Required]
+        public CommentState State { get; set; }
 
-		[Required]
-		public string? CommentText { get; set; }
+        [Required]
+        public string? CommentText { get; set; }
 
-		[Required]
-		public DateTime Timeline { get; set; }
+        [Required]
+        public DateTime Timeline { get; set; }
 
-		// Foreign key for User
-		[ForeignKey("User")]
-		public int? UserId { get; set; }
-		public User? User { get; set; }
+        // Foreign key for User
+        [ForeignKey("User")]
+        public int? UserId { get; set; }
+        public User? User { get; set; }
 
-		// Foreign key for Task
-		[ForeignKey("Task")]
-		public int? TaskId { get; set; }
-		public Task? Task { get; set; }
-	}
+        // Foreign key for Task
+        [ForeignKey("Task")]
+        public int? TaskId { get; set; }
+        public Task? Task { get; set; }
+    }
 
-	public class Attachment
-	{
+    public class Attachment
+    {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AttachmentId { get; set; }
 
-		[Required]
-		public string? Url { get; set; }
-		public string? Name { get; set; }
-		public AttachmentType FileType { get; set; }
+        [Required]
+        public string? Url { get; set; }
+        public string? Name { get; set; }
+        public AttachmentType FileType { get; set; }
         public DateTime UploadedAt { get; set; } = DateTime.UtcNow;
 
         // Foreign key for Task
         [ForeignKey("Task")]
-		public int? TaskId { get; set; }
-		public Task? Task { get; set; }
-	}
+        public int? TaskId { get; set; }
+        public Task? Task { get; set; }
+    }
 
-	public class Project
-	{
+    public class Project
+    {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? ProjectId { get; set; }
 
-		[Required]
-		public string? Title { get; set; }
-		public string? Description { get; set; }
-		public DateTime CreateAt { get; set; } = DateTime.UtcNow;
-		public ICollection<Task> Tasks { get; set; } = new List<Task>();
+        [Required]
+        public string? Title { get; set; }
+        public string? Description { get; set; }
+        public DateTime CreateAt { get; set; } = DateTime.UtcNow;
+        public ICollection<Task> Tasks { get; set; } = new List<Task>();
     }
 
     public class Task
@@ -150,7 +150,7 @@ namespace TodoAppBackend
         public string? Description { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime Deadline { get; set; }
-		public TaskState State { get; set; }
+        public TaskState State { get; set; }
 
         [Required]
         public string[] Type { get; set; } = Array.Empty<string>();
@@ -174,13 +174,13 @@ namespace TodoAppBackend
     }
 
     public class TaskTag
-	{
-		public int TaskId { get; set; }
-		public Task? Task { get; set; }
+    {
+        public int TaskId { get; set; }
+        public Task? Task { get; set; }
 
-		public int TagId { get; set; }
-		public Tag? Tag { get; set; }
-	}
+        public int TagId { get; set; }
+        public Tag? Tag { get; set; }
+    }
 
     public enum Color
     {
@@ -193,12 +193,12 @@ namespace TodoAppBackend
         pink,
     }
     public class Event
-	{
+    {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EventId { get; set; }
-		public string? EventName { get; set; }
-		public string? Description { get; set; }
+        public string? EventName { get; set; }
+        public string? Description { get; set; }
         public Color? Color { get; set; }
         public DateOnly Date { get; set; }
         public TimeOnly StartTime { get; set; }
