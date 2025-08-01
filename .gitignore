@@ -352,3 +352,4 @@ FodyWeavers.xsd
 *.user
 *.userosscache
 *.sln.docstates
+.vs/TodoAppBackend/v17/.suo
