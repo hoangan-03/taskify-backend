@@ -353,3 +353,8 @@ FodyWeavers.xsd
 *.userosscache
 *.sln.docstates
 .vs/TodoAppBackend/v17/.suo
+
+# Configuration files with sensitive data
+appsettings.json
+appsettings.*.json
+!appsettings.example.json
